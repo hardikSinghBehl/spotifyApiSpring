@@ -1,0 +1,38 @@
+// Accordion basic
+.md-accordion {
+  .card {
+    overflow: visible;
+    border-bottom: 1px solid $grey-lighten-2;
+    border-radius: 0;
+    box-shadow: none;
+    &:first-of-type,
+    &:not(:first-of-type):not(:last-of-type) {
+      border-bottom: 1px solid $grey-lighten-2;
+    }
+    .card-header {
+      padding: $accordion-card-header-padding-y $accordion-card-header-padding-x;
+      background: transparent;
+      border-bottom: 0;
+      .card-title {
+        font-weight: 400;
+      }
+      a {
+        transition: $accordion-link-hover-transition;
+      }
+      a:not(.collapsed) {
+        .rotate-icon {
+          transform: $accordion-rotate-icon-transform;
+        }
+      }
+    }
+    .fa-angle-down {
+      float: right;
+    }
+    .card-body {
+      font-size: $accordion-card-body-font-size;
+      font-weight: 300;
+      line-height: $accordion-card-body-line-height;
+      color: $accordion-card-body-color;
+    }
+  }
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Spotify Data</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="css/mdb.min.css">
+    <!-- Your custom styles (optional) -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body class="body-bg">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+        <div class="container">
+            <a class="navbar-brand h1-responsive display-4 heading-main text-white">Spotify Data</a>
+            <form class="form-inline pb-0" action="search" method="post">
+                <div class="md-form my-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search..." name="searchQuery">
+                </div>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container container-username">
+        <div class="row">
+        	<div class="col-12 text-center">
+            <h3 class="h3 container-username-heading mx-auto">Search Results</h3></div>
+            <div class="col-12 text-center mt-2">
+            <a class="btn btn-success btn-rounded btn-sm mx-auto" type="button" href="/redirect">Go Back</a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row mt-4">
+                <h2 class="h2-responsive" style="font-family: heading; font-size: 2.5rem; color: #aed581">Artists</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-6 my-2">
+                    <div class="card" style="width:10.5rem" th:attr="onclick=|openSpotifyLink('${results.artists.items[0].external_urls.spotify}')|">
+                        <img class="card-img-top" src="https://i.scdn.co/image/4a9334106651fcd93652f073092c67a7922acafb" th:src="@{''+${results.artists.items[0].images[0].url}+''}"  alt="Card image cap">
+                        <div class="card-body text-center">
+                            <p class="card-title text-dark font-weight-bold" th:text="${results.artists.items[0].name}">Sonu Nigam</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="hr bg-success">
+            <div class="row mt-2">
+                <h2 class="h2-responsive" style="font-family: heading; font-size: 2.5rem; color: #aed581">Tracks</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-6 my-2" th:each="track: ${results.tracks.items}">
+                    <div class="card" style="width:10.5rem" th:attr="onclick=|openSpotifyLink('${track.album.external_urls.spotify}')|">
+                        <img class="card-img-top" src="https://i.scdn.co/image/ab67616d00001e02a2055e0b847ff66fb5206099" th:src="@{''+${track.album.images[1].url}+''}" alt="Card image cap">
+                        <div class="card-body text-center">
+                            <p class="card-title text-dark font-weight-bold" th:text="${track.album.name}">Kal Ho Naa Ho (Original Motion Picture Soundtrack)</p>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <hr class="hr bg-success">
+            <div class="row mt-2">
+                <h2 class="h2-responsive" style="font-family: heading; font-size: 2.5rem; color: #aed581">Albums</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-6 my-2" th:each="album: ${results.albums.items}">
+                    <div class="card" style="width:10.5rem" th:attr="onclick=|openSpotifyLink('${album.external_urls.spotify}')|">
+                        <img class="card-img-top" src="https://i.scdn.co/image/ab67616d00001e02d0ffff6dad0804bec787fe57" th:src="@{''+${album.images[1].url}+''}" alt="Card image cap">
+                        <div class="card-body text-center">
+                            <p class="card-title text-dark font-weight-bold" th:text="${album.name}">Sonu Nigam: Best of Me</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="hr bg-success">
+            <div class="row mt-2">
+                <h2 class="h2-responsive" style="font-family: heading; font-size: 2.5rem; color: #aed581">Playlists</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-6 my-2" th:each="playlist: ${results.playlists.items}">
+                    <div class="card" style="width:10.5rem" th:attr="onclick=|openSpotifyLink('${playlist.external_urls.spotify}')|">
+                        <img class="card-img-top" src="https://i.scdn.co/image/ab67706c0000bebb7f815a332f4059b9e9679b5e" th:src="@{''+${playlist.images[0].url}+''}" alt="Card image cap">
+                        <div class="card-body text-center">
+                            <p class="card-title text-dark font-weight-bold" th:text="${playlist.name}">Collection of Super hit Hindi songs sung by Sonu Nigam</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- Your custom scripts (optional) -->
+    <script type="text/javascript">
+  //changing padding of navbar on scroll
+    $(window).scroll(function() {
+        let position = $(this).scrollTop();
+        if (position >= 100) {
+            $('.navbar').addClass('custom-navigation-bar');
+        } else {
+            $('.navbar').removeClass('custom-navigation-bar');
+        }
+    });
+  
+  function openSpotifyLink(link){
+	  window.open(link);
+  }
+    </script>
+
+</body>
+
+</html>
