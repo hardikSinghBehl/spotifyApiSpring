@@ -10,7 +10,7 @@ public class URL {
 	
 	private CodeChallenge codeChallengeObj = new CodeChallenge();
 	
-	private final String clientId = "1aafbb1d16e94c528ef710d6cf67a21a"; 
+	private final String clientId = "...";//Enter Your Client ID Here 
 	
 	private final String redirectUrl = "http://localhost:8080/callback";/*"http://spotifydata-env.eba-yfeju4iw.us-east-2.elasticbeanstalk.com./callback";*/
 	
