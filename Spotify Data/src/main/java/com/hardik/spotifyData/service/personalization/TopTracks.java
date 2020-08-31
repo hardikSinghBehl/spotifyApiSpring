@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.hardik.spotifyData.exceptions.NoAccountDataException;
+
 @Service
 public class TopTracks {
 	
@@ -33,7 +35,7 @@ public class TopTracks {
 		ArrayList items = (ArrayList)result.get("items");
 		
 		if (items.size()==0) {
-			throw new RuntimeException();
+			throw new NoAccountDataException();
 		}
 		
 		return result;

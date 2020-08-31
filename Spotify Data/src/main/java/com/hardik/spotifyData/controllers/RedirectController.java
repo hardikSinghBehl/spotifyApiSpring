@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.hardik.spotifyData.exceptions.NoTrackPlayingException;
 import com.hardik.spotifyData.service.CurrentPlaying;
 import com.hardik.spotifyData.service.UserDetails;
 
@@ -29,7 +30,7 @@ public class RedirectController {
 		try {
 			model.addAttribute("currentPlaying", currentPlaying.getCurrentPlaying(token));
 			model.addAttribute("display", 1);
-		}catch(Exception exception) {
+		}catch(NoTrackPlayingException exception) {
 			model.addAttribute("display", 0);
 		}
 		return "callback-success";

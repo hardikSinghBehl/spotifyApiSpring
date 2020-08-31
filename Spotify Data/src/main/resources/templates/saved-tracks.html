@@ -19,8 +19,14 @@
 
 <body class="body-bg">
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    
         <div class="container">
             <a class="navbar-brand h1-responsive display-4 heading-main text-white">Spotify Data</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapseNav"
+   				 aria-controls="collapseNav" aria-expanded="false" aria-label="Toggle navigation">
+    		<span class="navbar-toggler-icon"></span>
+  			</button>
+  			 <div class="collapse navbar-collapse justify-content-end" id="collapseNav">
             <form class="form-inline pb-0" action="search" method="post">
                 <div class="md-form my-0">
                     <input class="form-control mr-sm-2" type="text" placeholder="Search..." name="searchQuery">

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.hardik.spotifyData.exceptions.NoTrackPlayingException;
 import com.hardik.spotifyData.service.AccessToken;
 import com.hardik.spotifyData.service.CurrentPlaying;
 import com.hardik.spotifyData.service.URL;
@@ -50,7 +51,7 @@ public class CallbackController {
 		try {
 			model.addAttribute("currentPlaying", currentPlaying.getCurrentPlaying(token));
 			model.addAttribute("display", 1);
-		}catch(Exception exception) {
+		}catch(NoTrackPlayingException exception) {
 			model.addAttribute("display", 0);
 		}
 		

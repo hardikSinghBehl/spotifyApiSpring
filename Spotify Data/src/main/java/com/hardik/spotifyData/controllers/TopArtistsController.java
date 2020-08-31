@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hardik.spotifyData.exceptions.NoAccountDataException;
 import com.hardik.spotifyData.service.TermPeriod;
 import com.hardik.spotifyData.service.personalization.TopArtists;
 
@@ -27,7 +28,7 @@ public class TopArtistsController {
 		try {
 			model.addAttribute("artists", topArtists.getTopArtists((String)session.getAttribute("accessToken"), term));
 			model.addAttribute("term", termPeriod.getTerm(term));
-		}catch(RuntimeException exception) {
+		}catch(NoAccountDataException exception) {
 			return "no-data";
 		}
 		return "top-artists";

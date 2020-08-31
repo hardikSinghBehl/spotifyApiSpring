@@ -13,6 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.hardik.spotifyData.exceptions.InvalidSearchException;
+
 @Service
 public class SearchResults {
 	
@@ -26,7 +28,7 @@ public class SearchResults {
 	public Object search(String token, String searchQuery) {
 		
 		if (!isValid(token, searchQuery)) {
-			throw new RuntimeException();
+			throw new InvalidSearchException();
 		}
 		
 		HttpHeaders headers = new HttpHeaders();

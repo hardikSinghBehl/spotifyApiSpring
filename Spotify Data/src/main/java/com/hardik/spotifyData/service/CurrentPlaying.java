@@ -1,6 +1,5 @@
 package com.hardik.spotifyData.service;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +9,8 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import com.hardik.spotifyData.exceptions.NoTrackPlayingException;
 
 @Service
 public class CurrentPlaying {
@@ -26,7 +27,7 @@ public class CurrentPlaying {
 		
 		ResponseEntity<Object> response = restTemplate.exchange("https://api.spotify.com/v1/me/player/currently-playing", HttpMethod.GET, entity, Object.class);
 		if (response.getStatusCodeValue()==204) {
-			throw new RuntimeException();
+			throw new NoTrackPlayingException();
 		}
 		LinkedHashMap result = (LinkedHashMap)response.getBody();
 		return result;

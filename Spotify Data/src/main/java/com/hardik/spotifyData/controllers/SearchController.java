@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hardik.spotifyData.exceptions.InvalidSearchException;
 import com.hardik.spotifyData.service.CurrentPlaying;
 import com.hardik.spotifyData.service.SearchResults;
 import com.hardik.spotifyData.service.UserDetails;
@@ -25,7 +26,7 @@ public class SearchController {
 		String token = (String)session.getAttribute("accessToken");
 		try {
 			model.addAttribute("results", searchResults.search(token, searchQuery));
-		}catch(RuntimeException exception) {
+		}catch(InvalidSearchException exception) {
 			return "search-error";
 		}
 		return "search-results";

@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.hardik.spotifyData.exceptions.NoTrackSavedException;
+
 @Service
 public class SavedTracks {
 	
@@ -31,7 +33,7 @@ public class SavedTracks {
 		ArrayList items = (ArrayList)result.get("items");
 		
 		if (items.size()==0) {
-			throw new RuntimeException();
+			throw new NoTrackSavedException();
 		}
 		return result;
 	}
