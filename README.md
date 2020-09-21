@@ -5,6 +5,7 @@
   <li>Set Redirect URL to http://localhost:8080/callback</li>
   <li>Copy The Client Id to Set It as The Value Of instance Variable clientId in com/hardik/spotifyData/service/URL.java</li>
   <li>Run The Application</li>
+  <li><a href="http://spotifydata-env.eba-yfeju4iw.us-east-2.elasticbeanstalk.com/">Running Website Link</a></li>
 </ul>
 </h4>
 
