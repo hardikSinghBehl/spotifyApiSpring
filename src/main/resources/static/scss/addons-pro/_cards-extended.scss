@@ -1,0 +1,400 @@
+// Cards extended
+
+@import "../core/_colors";
+@import "../core/_variables";
+@import "../core/_mixins";
+@import "../core/_global";
+@import "../pro/_variables";
+
+.card {
+  &.promoting-card {
+    .fas,
+    .fab,
+    .far {
+      transition: .4s;
+      &[class*="fa-"] {
+        &:hover {
+          cursor: pointer;
+          transition: .4s;
+        }
+      }
+    }
+  }
+  &.weather-card {
+    .collapse-content {
+      a {
+        &.collapsed {
+          &:after {
+            content: "Expand";
+          }
+        }
+        &:not(.collapsed) {
+          &:after {
+            content: "Collapse";
+          }
+        }
+      }
+    }
+    .degree {
+      &:after {
+        position: absolute;
+        margin-top: .9rem;
+        font-size: 3rem;
+        font-weight: 400;
+        content: "°C";
+      }
+    }
+  }
+  &.gradient-card {
+    transition: all .5s ease-in-out;
+    .first-content {
+      .card-title {
+        font-weight: 500;
+      }
+    }
+    .second-content {
+      display: none;
+    }
+    .third-content {
+      display: none;
+    }
+    .card-body {
+      height: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      overflow: hidden;
+      visibility: hidden;
+      opacity: 0;
+      transition: all .5s ease-in-out;
+    }
+    .card-image {
+      border-radius: .25rem;
+      .mask {
+        border-radius: .25rem;
+      }
+    }
+    &:focus-within {
+      margin-top: 3rem;
+      transition: all .5s ease-in-out;
+      .card-image {
+        width: 7rem;
+        height: 7rem;
+        margin-top: -2rem;
+        margin-bottom: 2rem;
+        margin-left: 1rem;
+        border-radius: .25rem;
+        transition: all .5s ease-in-out;
+        @extend .z-depth-1;
+        .mask {
+          border-radius: .25rem;
+        }
+      }
+      .card-body {
+        height: auto;
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+        overflow: visible;
+        visibility: visible;
+        border-radius: .25rem;
+        opacity: 1;
+        transition: all .7s ease-in-out;
+        .progress {
+          height: .4rem;
+          .progress-bar {
+            height: .4rem;
+          }
+        }
+      }
+      .first-content {
+        display: none;
+      }
+      .second-content {
+        display: block;
+      }
+      .third-content {
+        display: block;
+        margin-top: -6rem;
+      }
+    }
+    @media (max-device-width: 1025px) {
+      &:hover {
+        margin-top: 3rem;
+        transition: all .5s ease-in-out;
+        .card-image {
+          width: 7rem;
+          height: 7rem;
+          margin-top: -2rem;
+          margin-bottom: 2rem;
+          margin-left: 1rem;
+          border-radius: .25rem;
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+          transition: all .5s ease-in-out;
+          .mask {
+            border-radius: .25rem;
+          }
+        }
+        .card-body {
+          height: auto;
+          padding-top: 1.25rem;
+          padding-bottom: 1.25rem;
+          overflow: visible;
+          visibility: visible;
+          border-radius: .25rem;
+          opacity: 1;
+          transition: all .7s ease-in-out;
+          .progress {
+            height: .4rem;
+            .progress-bar {
+              height: .4rem;
+            }
+          }
+        }
+        .first-content {
+          display: none;
+        }
+        .second-content {
+          display: block;
+        }
+        .third-content {
+          display: block;
+          margin-top: -6rem;
+        }
+      }
+    }
+  }
+  &.booking-card {
+    .rating {
+      font-size: .7rem;
+    }
+  }
+  &.chart-card {
+    .classic-tabs {
+      .nav {
+        li {
+          a {
+            &.active {
+              border-bottom: 2px solid;
+              transition: width .5s ease, background-color .5s ease;
+            }
+          }
+        }
+        &.tabs-white {
+          li {
+            a {
+              font-weight: 500;
+              color: $grey-darken-1;
+              &.active {
+                color: $deep-purple-base;
+              }
+            }
+          }
+        }
+      }
+    }
+    .btn-deep-purple-accent {
+      margin-top: -65px;
+      background-color: $deep-purple-accent-1;
+      i {
+        color: $black-base !important;
+      }
+    }
+    .btn-teal-accent {
+      margin-top: -65px;
+      background-color: $teal-accent-3;
+      i {
+        color: $black-base !important;
+      }
+    }
+  }
+  &.colorful-card {
+    .indigo-accent-text {
+      color: $indigo-accent-4;
+    }
+    .btn-indigo-accent {
+      background-color: $indigo-accent-4;
+    }
+    .yellow-darken-text {
+      color: $yellow-darken-1;
+    }
+    .testimonial-card {
+      .avatar {
+        width: 55px;
+        margin-top: -30px;
+        border: 3px solid #fff;
+        img {
+          width: 50px;
+          height: 50px;
+        }
+      }
+    }
+    .brown-darken-text {
+      color: $brown-darken-4;
+    }
+    .btn-red-lighten {
+      background-color: $red-lighten-4;
+    }
+  }
+  &.panels-card {
+    .hour {
+      margin-top: .3rem;
+      font-size: .8rem;
+    }
+  }
+  &.map-card {
+    .living-coral {
+      background-color: #fa7268;
+    }
+    .living-coral-text {
+      color: #fa7268;
+    }
+    .table th {
+      width: 2rem;
+    }
+    .pt-3-5 {
+      padding-top: 1.25rem;
+    }
+    .card-body {
+      position: absolute;
+      top: 23%;
+      width: 100%;
+      height: 77%;
+      overflow: hidden;
+      background-color: transparent;
+      border-radius: 0 !important;
+      transition: all 1s;
+      &.closed {
+        top: 100%;
+        height: 8.1rem;
+        margin-top: -8.1rem;
+      }
+    }
+    .map-container {
+      position: relative;
+      height: 0;
+      padding-bottom: 56.25%;
+      overflow: hidden;
+      iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .button {
+      .btn-floating {
+        margin-top: -2rem;
+      }
+    }
+  }
+}
+.card-wrapper {
+  &.card-action {
+    min-height: 640px;
+    @media (max-width: 450px) {
+      min-height: 790px;
+    }
+  }
+}
+
+.card-form {
+  .md-form {
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      &:focus:not([readonly]) {
+        border-bottom: 1px solid #fff;
+        box-shadow: 0 1px 0 0 #fff;
+      }
+    }
+  }
+  .card-form-2 {
+    margin-top: -35px;
+    border-top-left-radius: 21px;
+    border-top-right-radius: 21px;
+    .form-check-input[type="checkbox"].filled-in:checked + label:after,
+    label.btn input[type="checkbox"].filled-in:checked + label:after {
+      background-color: $red-darken-1;
+      border: $checkbox-label-before-after-border-width solid $red-darken-1;
+    }
+    .btn-outline-red-accent {
+      color: $red-darken-1;
+      background-color: transparent;
+      border: 2px solid $red-darken-1;
+    }
+    .pink-accent-text {
+      color: $pink-accent-4;
+    }
+  }
+}
+
+.z-depth-1-bottom {
+  box-shadow: 0 5px 5px -2px rgba(0, 0, 0, .16);
+}
+
+$checkbox-colors: () !default;
+$checkbox-colors: map-merge(
+  (
+    "red": #fb0025,
+    "purple": #69004b,
+    "blue":   #0d47a1,
+    "teal":   #00695c,
+    "unique": #3f729b
+  ),
+  $checkbox-colors
+) !default;
+
+.md-calendar {
+  background-color: #69004b;
+  .weekdays,
+  .days {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    li {
+      width: 13.6%;
+      padding: .9rem 0;
+      text-align: center;
+    }
+  }
+  .days {
+    li {
+      margin-bottom: .5rem;
+      font-size: .9rem;
+      &.active {
+        background-color: #fb0025;
+        &.rounded-right {
+          border-top-right-radius: 50% !important;
+          border-bottom-right-radius: 50% !important;
+        }
+        &.rounded-left {
+          border-top-left-radius: 50% !important;
+          border-bottom-left-radius: 50% !important;
+        }
+      }
+    }
+  }
+  @each $key, $value in $checkbox-colors {
+    .#{$key}-checkbox {
+      .form-check-input[type="checkbox"] {
+        &.filled-in {
+          &:checked {
+            + label {
+              &:after {
+                background-color: $value;
+                border: $checkbox-label-before-after-border-width solid $value;
+              }
+            }
+          }
+          &:not(:checked) {
+            + label {
+              &:after {
+                border: $checkbox-label-before-after-border-width solid $value;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

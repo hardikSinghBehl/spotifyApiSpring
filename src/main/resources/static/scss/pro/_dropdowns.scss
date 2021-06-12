@@ -1,0 +1,73 @@
+// Dropdown pro
+// Dropdowns menu's colors
+.dropdown,
+.dropup,
+.dropleft,
+.dropright {
+  .dropdown-menu {
+    padding: $dropdown-menu-padding;
+
+    @each $name,
+      $color in $dropdown-colors {
+      &.dropdown-#{$name} {
+        .dropdown-item {
+
+          &:hover,
+          &:active,
+          &.active {
+            background-color: $color !important;
+            border-radius: $border-radius-base;
+            box-shadow: $z-depth-1-half;
+            &.disabled {
+              background-color: transparent;
+              box-shadow: none;
+            }
+          }
+        }
+      }
+    }
+
+    .dropdown-item {
+      padding: $dropdown-menu-padding;
+      margin-left: 0;
+      font-size: $dropdown-item-font-size;
+
+      &.disabled {
+        color: $dropdown-item-disabled-color;
+
+        &:hover,
+        &:active,
+        &:focus {
+          color: $dropdown-item-disabled-color !important;
+          background-color: transparent !important;
+          box-shadow: none;
+        }
+      }
+
+      &:hover,
+      &:active {
+        background-color: $primary-color;
+        border-radius: $border-radius-base;
+        box-shadow: $z-depth-1-half;
+        transition: $dropdown-item-transition;
+        // color: #fff !important;
+        @extend .white-text !optional;
+      }
+    }
+  }
+}
+
+.navbar-nav {
+  .dropdown-menu-right {
+    right: 0;
+    left: auto;
+  }
+}
+
+.dropdown-menu {
+  &.animated {
+    /* Speed up animations */
+    animation-duration: $dropdown-menu-animated-animation-duration;
+    animation-timing-function: $dropdown-menu-animated-animation-timing-function;
+  }
+}

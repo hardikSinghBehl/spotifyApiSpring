@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Spotify Data</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="css/mdb.min.css">
+    <!-- Your custom styles (optional) -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+        <div class="container">
+            <a class="navbar-brand h1-responsive display-4 heading-main" href="#">Spotify Data</a>
+        </div>
+    </nav>
+    <div class="justify-content-center text-center button-action">
+        <a type="button" th:href="@{${url}}" class="btn btn-success btn-custom btn-lg btn-rounded waves-effect">Get Started</a>
+        <div>
+            <a class="text-white" type="button" data-toggle="modal" data-target="#modalDetails" style="text-decoration: underline">What It Does?</a>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="modalDetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md modal-notify modal-success" role="document">
+            <div class="modal-content text-center">
+                <div class="modal-header d-flex justify-content-center">
+                    <p class="heading">What Can Spotify Data Do?</p>
+                </div>
+
+                <div class="modal-body">
+                    <div class="container text-left">
+                        <div class="font-weight-bold text-left">
+                            <div>Show Your Top Played Tracks/Artists</div>
+                            <ul>
+                                <li>Of All Time</li>
+                                <li>From Past 6 Months</li>
+                                <li>From Past Month</li>
+                            </ul>
+                        </div>
+                        <div class="font-weight-bold" style="margin-top: -10px">Your Saved Tracks</div>
+                        <div class="font-weight-bold">Your Saved Albums</div>
+                        <div class="font-weight-bold">Your Recent Played Tracks</div>
+                        <div class="font-weight-bold">New Releases</div>
+                        <div class="font-weight-bold">Featured Playlists</div>
+                        <div class="font-weight-bold">Current Playing Track</div>
+                        <div class="font-weight-bold">Search Tracks/Artists/Playlists</div>
+                    </div>
+                </div>
+                <div class="modal-footer flex-center">
+                    <a data-dismiss="modal" class="btn  btn-outline-success">Ok</a>
+                    <a type="button" class="btn  btn-success waves-effect" data-toggle="modal" data-target="#modalVideo">Sample Video</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal fade" id="modalVideo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+
+            <div class="modal-content">
+
+                <div class="modal-body mb-0 p-0">
+
+                    <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
+                        <iframe class="embed-responsive-item" src="video/sample.mp4" allowfullscreen></iframe>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer justify-content-center flex-column flex-md-row text-center">
+                    <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- Your custom scripts (optional) -->
+    <script type="text/javascript">
+    </script>
+    <div th:if="${param.logout}">
+        <script type="text/javascript">
+            toastr["success"]("Successfully Logged Out!");
+
+        </script>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+@mixin range () {
+
+  position: relative;
+
+  input[type="range"] {
+    position: relative;
+    width: 100%;
+    padding: 0;
+    margin: $input-range-my $input-range-mx;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+
+    // Firefox
+    border: 1px solid $white-base;
+    outline: none;
+
+    // Webkit
+    appearance: none;
+
+    &:focus {
+      outline: none;
+    }
+
+    + .thumb {
+      position: absolute;
+      top: $input-range-thumb-top;
+      width: 0;
+      height: 0;
+      margin-left: $input-range-thumb-margin-left;
+      background-color: $primary-color;
+      border: none;
+      border-radius: $border-radius-circle;
+      transform: $input-range-transform;
+      transform-origin: $input-range-transform-origin;
+
+      .value {
+        display: block;
+        width: $input-range-thumb-value-width;
+        font-size: 0;
+        color: $primary-color;
+        text-align: center;
+        transform: $input-range-thumb-value-transform;
+      }
+
+      &.active {
+        border-radius: $border-radius-circle $border-radius-circle $border-radius-circle 0;
+
+        .value {
+          margin-top: $input-range-active-value-mt;
+          margin-left: $input-range-active-value-ml;
+          font-size: $input-range-active-value-font-size;
+          color: $white-base;
+        }
+      }
+    }
+
+    &::-webkit-slider-runnable-track {
+      height: $slider-runnable-track-height;
+      background: $slider-runnable-track-bg;
+      border: none;
+    }
+
+    &::-webkit-slider-thumb {
+      width: $slider-thumb-width;
+      height: $slider-thumb-height;
+      margin: $slider-thumb-mt 0 0 0;
+      background-color: $primary-color;
+      border: none;
+      border-radius: $border-radius-circle;
+      transition: $slider-thumb-transition;
+      transform-origin: $input-range-transform-origin;
+      appearance: none;
+    }
+
+    &:focus::-webkit-slider-runnable-track {
+      background: $slider-runnable-track-focus-bg;
+    }
+
+    /* fix for FF unable to apply focus style bug  */
+    &::-moz-range-track {
+      /* required for proper track sizing in FF */
+      height: $slider-runnable-track-height;
+      background: $slider-runnable-track-bg;
+      border: none;
+    }
+
+    &::-moz-range-thumb {
+      width: $slider-thumb-width;
+      height: $slider-thumb-height;
+      margin-top: $slider-thumb-mt;
+      background: $primary-color;
+      border: none;
+      border-radius: $border-radius-circle;
+    }
+
+    &:-moz-focusring {
+      /* hide the outline behind the border */
+      outline: 1px solid $white-base;
+      outline-offset: -1px;
+    }
+
+    &:focus::-moz-range-track {
+      background: $slider-runnable-track-bg;
+    }
+
+    // IE 10+
+    &::-ms-track {
+      height: $slider-runnable-track-height;
+      color: transparent;
+      background: transparent;
+
+      /* remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+      border-color: transparent;
+
+      /* leave room for the larger thumb to overflow with a transparent border */
+      border-width: $slider-border-width 0;
+
+      /* remove default tick marks */
+    }
+
+    &::-ms-fill-lower {
+      background: $slider-runnable-track-bg;
+    }
+
+    &::-ms-fill-upper {
+      background: $slider-runnable-track-bg;
+    }
+
+    &::-ms-thumb {
+      width: $slider-thumb-width;
+      height: $slider-thumb-height;
+      background: $primary-color;
+      border: none;
+      border-radius: $border-radius-circle;
+    }
+
+    &:focus::-ms-fill-lower {
+      background: $slider-runnable-track-bg;
+    }
+
+    &:focus::-ms-fill-upper {
+      background: $slider-runnable-track-bg;
+    }
+  }
+}
