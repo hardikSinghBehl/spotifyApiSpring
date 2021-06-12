@@ -2,22 +2,23 @@ package com.hardik.pottify.controllers;
 
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.hardik.pottify.service.browse.FeaturedPlaylists;
 
+import lombok.AllArgsConstructor;
+
 @Controller
+@AllArgsConstructor
 public class FeaturedPlaylistsController {
-	
-	@Autowired
-	private FeaturedPlaylists featuredPlaylists;
-	
+
+	private final FeaturedPlaylists featuredPlaylists;
+
 	@GetMapping("/featuredPlaylists")
 	public String featuredPlaylistsHandler(HttpSession session, Model model) {
-		model.addAttribute("playlists", featuredPlaylists.getPlaylists((String)session.getAttribute("accessToken")));
+		model.addAttribute("playlists", featuredPlaylists.getPlaylists((String) session.getAttribute("accessToken")));
 		return "featured-playlists";
 	}
 

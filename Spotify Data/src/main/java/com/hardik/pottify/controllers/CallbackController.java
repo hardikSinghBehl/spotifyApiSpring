@@ -2,7 +2,6 @@ package com.hardik.pottify.controllers;
 
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,20 +13,16 @@ import com.hardik.pottify.service.CurrentPlaying;
 import com.hardik.pottify.service.URL;
 import com.hardik.pottify.service.UserDetails;
 
+import lombok.AllArgsConstructor;
+
 @Controller
+@AllArgsConstructor
 public class CallbackController {
 
-	@Autowired
-	private URL url;
-
-	@Autowired
-	private AccessToken accessToken;
-
-	@Autowired
-	private UserDetails userDetails;
-
-	@Autowired
-	private CurrentPlaying currentPlaying;
+	private final URL url;
+	private final AccessToken accessToken;
+	private final UserDetails userDetails;
+	private final CurrentPlaying currentPlaying;
 
 	@GetMapping("/callback")
 	public String handleCallback(@RequestParam(value = "code", required = false) String code,
