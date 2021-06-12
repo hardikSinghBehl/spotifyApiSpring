@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.hardik.pottify.exceptions.NoTrackPlayingException;
+import com.hardik.pottify.exception.NoTrackPlayingException;
 import com.hardik.pottify.service.CurrentPlaying;
 import com.hardik.pottify.service.UserDetails;
 

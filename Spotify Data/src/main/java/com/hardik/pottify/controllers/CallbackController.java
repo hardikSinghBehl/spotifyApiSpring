@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.hardik.pottify.exceptions.NoTrackPlayingException;
+import com.hardik.pottify.exception.NoTrackPlayingException;
 import com.hardik.pottify.service.AccessToken;
 import com.hardik.pottify.service.CurrentPlaying;
 import com.hardik.pottify.service.URL;

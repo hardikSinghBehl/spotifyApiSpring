@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.hardik.pottify.exceptions.InvalidSearchException;
+import com.hardik.pottify.exception.InvalidSearchException;
 import com.hardik.pottify.service.SearchResults;
 
 import lombok.AllArgsConstructor;

@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.hardik.pottify.exceptions.NoTrackPlayingException;
+import com.hardik.pottify.exception.NoTrackPlayingException;
 
 import lombok.AllArgsConstructor;
 

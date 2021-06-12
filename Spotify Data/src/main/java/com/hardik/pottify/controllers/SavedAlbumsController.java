@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.hardik.pottify.exceptions.NoAlbumSavedException;
+import com.hardik.pottify.exception.NoAlbumSavedException;
 import com.hardik.pottify.service.library.SavedAlbums;
 
 import lombok.AllArgsConstructor;

@@ -1,4 +1,4 @@
-package com.hardik.pottify.exceptions;
+package com.hardik.pottify.exception;
 
 public class NoTrackPlayingException extends RuntimeException {
 
