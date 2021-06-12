@@ -1,4 +1,4 @@
-package com.hardik.pottify.controllers;
+package com.hardik.pottify.controller;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;

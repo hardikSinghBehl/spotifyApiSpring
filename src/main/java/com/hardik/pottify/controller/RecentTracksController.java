@@ -1,4 +1,4 @@
-package com.hardik.pottify.controllers;
+package com.hardik.pottify.controller;
 
 import javax.servlet.http.HttpSession;
 

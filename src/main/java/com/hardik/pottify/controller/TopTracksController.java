@@ -1,4 +1,4 @@
-package com.hardik.pottify.controllers;
+package com.hardik.pottify.controller;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,26 +10,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hardik.pottify.constant.ApiPath;
 import com.hardik.pottify.exception.NoAccountDataException;
-import com.hardik.pottify.service.TopArtistService;
+import com.hardik.pottify.service.TopTrackService;
 import com.hardik.pottify.utility.TermPeriodUtility;
 
 import lombok.AllArgsConstructor;
 
 @Controller
 @AllArgsConstructor
-public class TopArtistsController {
+public class TopTracksController {
 
-	private final TopArtistService topArtists;
+	private final TopTrackService topTracks;
 
-	@GetMapping(value = ApiPath.TOP_ARTISTS, produces = MediaType.TEXT_HTML_VALUE)
-	public String topArtistsHandler(@RequestParam("term") final Integer term, final HttpSession session,
+	@GetMapping(value = ApiPath.TOP_TRACKS, produces = MediaType.TEXT_HTML_VALUE)
+	public String topTracksaHandler(@RequestParam("term") final Integer term, final HttpSession session,
 			final Model model) {
 		try {
-			model.addAttribute("artists", topArtists.getTopArtists((String) session.getAttribute("accessToken"), term));
+			model.addAttribute("tracks", topTracks.getTopTracks((String) session.getAttribute("accessToken"), term));
 			model.addAttribute("term", TermPeriodUtility.getTerm(term));
 		} catch (NoAccountDataException exception) {
 			return "no-data";
 		}
-		return "top-artists";
+		return "top-tracks";
 	}
 }
