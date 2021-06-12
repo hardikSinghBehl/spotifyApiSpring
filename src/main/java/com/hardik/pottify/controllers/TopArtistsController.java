@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hardik.pottify.exception.NoAccountDataException;
-import com.hardik.pottify.service.TermPeriod;
 import com.hardik.pottify.service.TopArtistService;
+import com.hardik.pottify.utility.TermPeriodUtility;
 
 import lombok.AllArgsConstructor;
 
@@ -18,14 +18,13 @@ import lombok.AllArgsConstructor;
 public class TopArtistsController {
 
 	private final TopArtistService topArtists;
-	private final TermPeriod termPeriod;
 
 	@GetMapping("/topArtists")
 	public String topArtistsHandler(@RequestParam("term") int term, HttpSession session, Model model) {
 
 		try {
 			model.addAttribute("artists", topArtists.getTopArtists((String) session.getAttribute("accessToken"), term));
-			model.addAttribute("term", termPeriod.getTerm(term));
+			model.addAttribute("term", TermPeriodUtility.getTerm(term));
 		} catch (NoAccountDataException exception) {
 			return "no-data";
 		}
