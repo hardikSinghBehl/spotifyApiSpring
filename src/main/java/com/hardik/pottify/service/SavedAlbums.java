@@ -1,5 +1,6 @@
-package com.hardik.pottify.service.browse;
+package com.hardik.pottify.service;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 import org.springframework.http.HttpEntity;
@@ -9,17 +10,19 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.hardik.pottify.exception.NoAlbumSavedException;
+
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class NewReleases {
+public class SavedAlbums {
 
 	private final RestTemplate restTemplate;
 
-	private String url = "https://api.spotify.com/v1/browse/new-releases?limit=50";
+	private String url = "https://api.spotify.com/v1/me/albums?limit=50";
 
-	public Object getReleases(String token) {
+	public Object getAlbums(String token) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.set("Authorization", "Bearer " + token);
 
@@ -28,8 +31,12 @@ public class NewReleases {
 		ResponseEntity<Object> response = restTemplate.exchange(url, HttpMethod.GET, entity, Object.class);
 		LinkedHashMap result = (LinkedHashMap) response.getBody();
 
+		ArrayList items = (ArrayList) result.get("items");
+
+		if (items.size() == 0) {
+			throw new NoAlbumSavedException();
+		}
+
 		return result;
-
 	}
-
 }

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.hardik.pottify.service.history.Tracks;
+import com.hardik.pottify.service.Tracks;
 
 import lombok.AllArgsConstructor;
 

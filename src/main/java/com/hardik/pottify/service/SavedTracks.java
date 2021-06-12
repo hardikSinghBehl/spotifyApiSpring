@@ -1,5 +1,6 @@
-package com.hardik.pottify.service.history;
+package com.hardik.pottify.service;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 import org.springframework.http.HttpEntity;
@@ -9,17 +10,19 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.hardik.pottify.exception.NoTrackSavedException;
+
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class Tracks {
+public class SavedTracks {
 
 	private final RestTemplate restTemplate;
 
-	private String url = "https://api.spotify.com/v1/me/player/recently-played?limit=50";
+	private String url = "https://api.spotify.com/v1/me/tracks?limit=50";
 
-	public Object getHistory(String token) {
+	public Object getTracks(String token) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.set("Authorization", "Bearer " + token);
 
@@ -28,6 +31,12 @@ public class Tracks {
 		ResponseEntity<Object> response = restTemplate.exchange(url, HttpMethod.GET, entity, Object.class);
 		LinkedHashMap result = (LinkedHashMap) response.getBody();
 
+		ArrayList items = (ArrayList) result.get("items");
+
+		if (items.size() == 0) {
+			throw new NoTrackSavedException();
+		}
 		return result;
 	}
+
 }

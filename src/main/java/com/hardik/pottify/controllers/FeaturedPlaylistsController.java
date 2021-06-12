@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.hardik.pottify.service.browse.FeaturedPlaylists;
+import com.hardik.pottify.service.FeaturedPlaylists;
 
 import lombok.AllArgsConstructor;
 

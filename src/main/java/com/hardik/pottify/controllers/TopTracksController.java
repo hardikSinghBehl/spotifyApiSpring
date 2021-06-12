@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hardik.pottify.exception.NoAccountDataException;
 import com.hardik.pottify.service.TermPeriod;
-import com.hardik.pottify.service.personalization.TopTracks;
+import com.hardik.pottify.service.TopTracks;
 
 import lombok.AllArgsConstructor;
 

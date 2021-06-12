@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.hardik.pottify.exception.NoTrackSavedException;
-import com.hardik.pottify.service.library.SavedTracks;
+import com.hardik.pottify.service.SavedTracks;
 
 import lombok.AllArgsConstructor;
 

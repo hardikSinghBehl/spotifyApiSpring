@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.hardik.pottify.exception.NoAlbumSavedException;
-import com.hardik.pottify.service.library.SavedAlbums;
+import com.hardik.pottify.service.SavedAlbums;
 
 import lombok.AllArgsConstructor;
 
