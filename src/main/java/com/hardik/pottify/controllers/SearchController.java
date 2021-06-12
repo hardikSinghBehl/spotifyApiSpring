@@ -19,7 +19,8 @@ public class SearchController {
 	private final SearchResultService searchResults;
 
 	@PostMapping("/search")
-	public String showSearchResults(@RequestParam("searchQuery") String searchQuery, HttpSession session, Model model) {
+	public String showSearchResults(@RequestParam("searchQuery") final String searchQuery, final HttpSession session,
+			final Model model) {
 		String token = (String) session.getAttribute("accessToken");
 		try {
 			model.addAttribute("results", searchResults.search(token, searchQuery));

@@ -17,11 +17,9 @@ public class RecentTracksController {
 	private final RecentPlayesTrackService tracks;
 
 	@GetMapping("/recentTracks")
-	public String recentTracksHandler(HttpSession session, Model model) {
-
+	public String recentTracksHandler(final HttpSession session, final Model model) {
 		model.addAttribute("tracks", tracks.getHistory((String) session.getAttribute("accessToken")));
 		return "recent-tracks";
-
 	}
 
 }

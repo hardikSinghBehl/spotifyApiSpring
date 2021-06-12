@@ -17,7 +17,7 @@ public class NewReleasesController {
 	private final NewReleasedService newReleases;
 
 	@GetMapping("/newReleases")
-	public String newReleasesHandler(HttpSession session, Model model) {
+	public String newReleasesHandler(final HttpSession session, final Model model) {
 		model.addAttribute("releases", newReleases.getReleases((String) session.getAttribute("accessToken")));
 		return "new-releases.html";
 	}

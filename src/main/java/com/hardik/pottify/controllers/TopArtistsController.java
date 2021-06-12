@@ -20,8 +20,8 @@ public class TopArtistsController {
 	private final TopArtistService topArtists;
 
 	@GetMapping("/topArtists")
-	public String topArtistsHandler(@RequestParam("term") int term, HttpSession session, Model model) {
-
+	public String topArtistsHandler(@RequestParam("term") final Integer term, final HttpSession session,
+			final Model model) {
 		try {
 			model.addAttribute("artists", topArtists.getTopArtists((String) session.getAttribute("accessToken"), term));
 			model.addAttribute("term", TermPeriodUtility.getTerm(term));

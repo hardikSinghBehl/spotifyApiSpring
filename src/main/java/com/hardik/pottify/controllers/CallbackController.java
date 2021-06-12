@@ -25,8 +25,9 @@ public class CallbackController {
 	private final CurrentPlayingService currentPlaying;
 
 	@GetMapping("/callback")
-	public String handleCallback(@RequestParam(value = "code", required = false) String code,
-			@RequestParam(value = "error", required = false) String error, Model model, HttpSession session) {
+	public String handleCallback(@RequestParam(value = "code", required = false) final String code,
+			@RequestParam(value = "error", required = false) final String error, final Model model,
+			final HttpSession session) {
 
 		if (error != null) {
 			model.addAttribute("url", url.getAuthorizationURL());

@@ -20,7 +20,7 @@ public class RedirectController {
 	private final CurrentPlayingService currentPlaying;
 
 	@GetMapping("/redirect")
-	public String redirectToCallbackSuccess(HttpSession session, Model model) {
+	public String redirectToCallbackSuccess(final HttpSession session, final Model model) {
 
 		String token = (String) session.getAttribute("accessToken");
 		model.addAttribute("accessToken", token);

@@ -18,7 +18,7 @@ public class SavedAlbumsController {
 	private final SavedAlbumService savedAlbumService;
 
 	@GetMapping("/savedAlbums")
-	public String savedAlbumsHandler(HttpSession session, Model model) {
+	public String savedAlbumsHandler(final HttpSession session, final Model model) {
 		try {
 			model.addAttribute("albums", savedAlbumService.getAlbums((String) session.getAttribute("accessToken")));
 		} catch (NoAlbumSavedException exception) {

@@ -20,7 +20,8 @@ public class TopTracksController {
 	private final TopTrackService topTracks;
 
 	@GetMapping("/topTracks")
-	public String topTracksaHandler(@RequestParam("term") int term, HttpSession session, Model model) {
+	public String topTracksaHandler(@RequestParam("term") final Integer term, final HttpSession session,
+			final Model model) {
 		try {
 			model.addAttribute("tracks", topTracks.getTopTracks((String) session.getAttribute("accessToken"), term));
 			model.addAttribute("term", TermPeriodUtility.getTerm(term));

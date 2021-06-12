@@ -17,7 +17,7 @@ public class FeaturedPlaylistsController {
 	private final FeaturedPlaylistService featuredPlaylists;
 
 	@GetMapping("/featuredPlaylists")
-	public String featuredPlaylistsHandler(HttpSession session, Model model) {
+	public String featuredPlaylistsHandler(final HttpSession session, final Model model) {
 		model.addAttribute("playlists", featuredPlaylists.getPlaylists((String) session.getAttribute("accessToken")));
 		return "featured-playlists";
 	}

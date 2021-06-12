@@ -15,7 +15,7 @@ public class IndexController {
 	private final SpotifyUrlService spotifyUrlService;
 
 	@GetMapping("/")
-	public String showIndex(Model model) {
+	public String showIndex(final Model model) {
 		model.addAttribute("url", spotifyUrlService.getAuthorizationURL());
 		return "index";
 	}

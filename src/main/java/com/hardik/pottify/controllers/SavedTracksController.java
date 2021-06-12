@@ -18,7 +18,7 @@ public class SavedTracksController {
 	private final SavedTrackService savedTracks;
 
 	@GetMapping("/savedTracks")
-	public String savedTracksHandler(HttpSession session, Model model) {
+	public String savedTracksHandler(final HttpSession session, final Model model) {
 		try {
 			model.addAttribute("tracks", savedTracks.getTracks((String) session.getAttribute("accessToken")));
 		} catch (NoTrackSavedException exception) {
