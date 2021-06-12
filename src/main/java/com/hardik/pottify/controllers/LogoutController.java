@@ -6,7 +6,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.hardik.pottify.bean.ApiPath;
+import com.hardik.pottify.constant.ApiPath;
 
 @Controller
 public class LogoutController {

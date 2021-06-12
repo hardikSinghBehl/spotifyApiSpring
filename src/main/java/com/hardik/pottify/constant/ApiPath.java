@@ -1,4 +1,4 @@
-package com.hardik.pottify.bean;
+package com.hardik.pottify.constant;
 
 public class ApiPath {
 
