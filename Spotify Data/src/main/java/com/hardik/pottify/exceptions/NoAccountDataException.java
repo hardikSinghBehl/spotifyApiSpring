@@ -2,11 +2,6 @@ package com.hardik.pottify.exceptions;
 
 public class NoAccountDataException extends RuntimeException {
 
-	public NoAccountDataException() {
-		super();
-	}
+	private static final long serialVersionUID = -7440409978196904718L;
 
-	public NoAccountDataException(String message) {
-		super(message);
-	}
 }

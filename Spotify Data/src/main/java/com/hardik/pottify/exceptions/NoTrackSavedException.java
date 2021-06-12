@@ -2,11 +2,6 @@ package com.hardik.pottify.exceptions;
 
 public class NoTrackSavedException extends RuntimeException {
 
-	public NoTrackSavedException() {
-		super();
-	}
+	private static final long serialVersionUID = 5618484070087795085L;
 
-	public NoTrackSavedException(String message) {
-		super(message);
-	}
 }

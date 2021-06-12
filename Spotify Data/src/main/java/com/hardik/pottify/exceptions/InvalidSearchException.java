@@ -1,12 +1,7 @@
 package com.hardik.pottify.exceptions;
 
-public class InvalidSearchException extends RuntimeException{
+public class InvalidSearchException extends RuntimeException {
 
-	public InvalidSearchException() {
-		super();
-	}
+	private static final long serialVersionUID = -1229913233029688788L;
 
-	public InvalidSearchException(String message) {
-		super(message);
-	}
 }
