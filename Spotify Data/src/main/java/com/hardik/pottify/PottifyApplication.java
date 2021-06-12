@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpotifyDataApplication {
+public class PottifyApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpotifyDataApplication.class, args);
+		SpringApplication.run(PottifyApplication.class, args);
 	}
 
 }
