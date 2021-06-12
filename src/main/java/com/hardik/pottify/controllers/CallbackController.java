@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hardik.pottify.exception.NoTrackPlayingException;
-import com.hardik.pottify.service.AccessToken;
-import com.hardik.pottify.service.CurrentPlaying;
+import com.hardik.pottify.service.AccessTokenService;
+import com.hardik.pottify.service.CurrentPlayingService;
+import com.hardik.pottify.service.ProfileDetailService;
 import com.hardik.pottify.service.SpotifyUrlService;
-import com.hardik.pottify.service.UserDetails;
 
 import lombok.AllArgsConstructor;
 
@@ -20,9 +20,9 @@ import lombok.AllArgsConstructor;
 public class CallbackController {
 
 	private final SpotifyUrlService url;
-	private final AccessToken accessToken;
-	private final UserDetails userDetails;
-	private final CurrentPlaying currentPlaying;
+	private final AccessTokenService accessToken;
+	private final ProfileDetailService userDetails;
+	private final CurrentPlayingService currentPlaying;
 
 	@GetMapping("/callback")
 	public String handleCallback(@RequestParam(value = "code", required = false) String code,

@@ -16,13 +16,13 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class TopTracks {
+public class TopArtistService {
 
 	private final RestTemplate restTemplate;
 
-	private String url = "https://api.spotify.com/v1/me/top/tracks?time_range=";
+	private String url = "https://api.spotify.com/v1/me/top/artists?time_range=";
 
-	public Object getTopTracks(String token, int term) {
+	public Object getTopArtists(String token, int term) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.set("Authorization", "Bearer " + token);
 

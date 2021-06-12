@@ -13,13 +13,13 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class NewReleases {
+public class RecentPlayesTrackService {
 
 	private final RestTemplate restTemplate;
 
-	private String url = "https://api.spotify.com/v1/browse/new-releases?limit=50";
+	private String url = "https://api.spotify.com/v1/me/player/recently-played?limit=50";
 
-	public Object getReleases(String token) {
+	public Object getHistory(String token) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.set("Authorization", "Bearer " + token);
 
@@ -29,7 +29,5 @@ public class NewReleases {
 		LinkedHashMap result = (LinkedHashMap) response.getBody();
 
 		return result;
-
 	}
-
 }

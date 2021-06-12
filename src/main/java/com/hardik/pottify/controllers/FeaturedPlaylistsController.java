@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.hardik.pottify.service.FeaturedPlaylists;
+import com.hardik.pottify.service.FeaturedPlaylistService;
 
 import lombok.AllArgsConstructor;
 
@@ -14,7 +14,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class FeaturedPlaylistsController {
 
-	private final FeaturedPlaylists featuredPlaylists;
+	private final FeaturedPlaylistService featuredPlaylists;
 
 	@GetMapping("/featuredPlaylists")
 	public String featuredPlaylistsHandler(HttpSession session, Model model) {

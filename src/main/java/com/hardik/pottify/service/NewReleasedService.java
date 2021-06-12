@@ -9,29 +9,27 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.hardik.pottify.exception.NoTrackPlayingException;
-
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Service
-@AllArgsConstructor
-public class CurrentPlaying {
+@RequiredArgsConstructor
+public class NewReleasedService {
 
 	private final RestTemplate restTemplate;
 
-	public LinkedHashMap getCurrentPlaying(String token) {
+	private String url = "https://api.spotify.com/v1/browse/new-releases?limit=50";
+
+	public Object getReleases(String token) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.set("Authorization", "Bearer " + token);
 
 		HttpEntity<String> entity = new HttpEntity<>("paramters", headers);
 
-		ResponseEntity<Object> response = restTemplate.exchange(
-				"https://api.spotify.com/v1/me/player/currently-playing", HttpMethod.GET, entity, Object.class);
-		if (response.getStatusCodeValue() == 204) {
-			throw new NoTrackPlayingException();
-		}
+		ResponseEntity<Object> response = restTemplate.exchange(url, HttpMethod.GET, entity, Object.class);
 		LinkedHashMap result = (LinkedHashMap) response.getBody();
+
 		return result;
+
 	}
 
 }

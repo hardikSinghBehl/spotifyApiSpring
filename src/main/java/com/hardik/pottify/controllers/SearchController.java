@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hardik.pottify.exception.InvalidSearchException;
-import com.hardik.pottify.service.SearchResults;
+import com.hardik.pottify.service.SearchResultService;
 
 import lombok.AllArgsConstructor;
 
@@ -16,7 +16,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class SearchController {
 
-	private final SearchResults searchResults;
+	private final SearchResultService searchResults;
 
 	@PostMapping("/search")
 	public String showSearchResults(@RequestParam("searchQuery") String searchQuery, HttpSession session, Model model) {

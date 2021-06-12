@@ -7,8 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.hardik.pottify.exception.NoTrackPlayingException;
-import com.hardik.pottify.service.CurrentPlaying;
-import com.hardik.pottify.service.UserDetails;
+import com.hardik.pottify.service.CurrentPlayingService;
+import com.hardik.pottify.service.ProfileDetailService;
 
 import lombok.AllArgsConstructor;
 
@@ -16,8 +16,8 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class RedirectController {
 
-	private final UserDetails userDetails;
-	private final CurrentPlaying currentPlaying;
+	private final ProfileDetailService userDetails;
+	private final CurrentPlayingService currentPlaying;
 
 	@GetMapping("/redirect")
 	public String redirectToCallbackSuccess(HttpSession session, Model model) {

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.hardik.pottify.service.Tracks;
+import com.hardik.pottify.service.RecentPlayesTrackService;
 
 import lombok.AllArgsConstructor;
 
@@ -14,7 +14,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class RecentTracksController {
 
-	private final Tracks tracks;
+	private final RecentPlayesTrackService tracks;
 
 	@GetMapping("/recentTracks")
 	public String recentTracksHandler(HttpSession session, Model model) {

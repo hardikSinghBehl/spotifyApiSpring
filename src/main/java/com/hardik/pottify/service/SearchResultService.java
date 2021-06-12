@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class SearchResults {
+public class SearchResultService {
 
 	private final RestTemplate restTemplate;
 

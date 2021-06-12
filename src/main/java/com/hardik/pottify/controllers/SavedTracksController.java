@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.hardik.pottify.exception.NoTrackSavedException;
-import com.hardik.pottify.service.SavedTracks;
+import com.hardik.pottify.service.SavedTrackService;
 
 import lombok.AllArgsConstructor;
 
@@ -15,7 +15,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class SavedTracksController {
 
-	private final SavedTracks savedTracks;
+	private final SavedTrackService savedTracks;
 
 	@GetMapping("/savedTracks")
 	public String savedTracksHandler(HttpSession session, Model model) {

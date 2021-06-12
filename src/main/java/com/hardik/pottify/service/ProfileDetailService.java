@@ -9,25 +9,30 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
-public class FeaturedPlaylists {
+@AllArgsConstructor
+public class ProfileDetailService {
 
 	private final RestTemplate restTemplate;
 
-	private String url = "https://api.spotify.com/v1/browse/featured-playlists?limit=50";
-
-	public Object getPlaylists(String token) {
+	public LinkedHashMap getUser(String token) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.set("Authorization", "Bearer " + token);
 
 		HttpEntity<String> entity = new HttpEntity<>("paramters", headers);
 
-		ResponseEntity<Object> response = restTemplate.exchange(url, HttpMethod.GET, entity, Object.class);
+		ResponseEntity<Object> response = restTemplate.exchange("https://api.spotify.com/v1/me", HttpMethod.GET, entity,
+				Object.class);
 		LinkedHashMap result = (LinkedHashMap) response.getBody();
 
 		return result;
 	}
+
+	public String getUsername(String token) {
+		LinkedHashMap user = getUser(token);
+		return (String) user.get("display_name");
+	}
+
 }

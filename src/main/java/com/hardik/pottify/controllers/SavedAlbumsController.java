@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.hardik.pottify.exception.NoAlbumSavedException;
-import com.hardik.pottify.service.SavedAlbums;
+import com.hardik.pottify.service.SavedAlbumService;
 
 import lombok.AllArgsConstructor;
 
@@ -15,12 +15,12 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class SavedAlbumsController {
 
-	private final SavedAlbums savedAlbums;
+	private final SavedAlbumService savedAlbumService;
 
 	@GetMapping("/savedAlbums")
 	public String savedAlbumsHandler(HttpSession session, Model model) {
 		try {
-			model.addAttribute("albums", savedAlbums.getAlbums((String) session.getAttribute("accessToken")));
+			model.addAttribute("albums", savedAlbumService.getAlbums((String) session.getAttribute("accessToken")));
 		} catch (NoAlbumSavedException exception) {
 			return "no-album-saved";
 		}

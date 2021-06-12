@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hardik.pottify.exception.NoAccountDataException;
 import com.hardik.pottify.service.TermPeriod;
-import com.hardik.pottify.service.TopArtists;
+import com.hardik.pottify.service.TopArtistService;
 
 import lombok.AllArgsConstructor;
 
@@ -17,7 +17,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class TopArtistsController {
 
-	private final TopArtists topArtists;
+	private final TopArtistService topArtists;
 	private final TermPeriod termPeriod;
 
 	@GetMapping("/topArtists")

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.hardik.pottify.service.NewReleases;
+import com.hardik.pottify.service.NewReleasedService;
 
 import lombok.AllArgsConstructor;
 
@@ -14,7 +14,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class NewReleasesController {
 
-	private final NewReleases newReleases;
+	private final NewReleasedService newReleases;
 
 	@GetMapping("/newReleases")
 	public String newReleasesHandler(HttpSession session, Model model) {

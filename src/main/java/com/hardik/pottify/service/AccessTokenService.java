@@ -19,9 +19,9 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 @EnableConfigurationProperties(value = SpotifyAppConfigurationProperties.class)
-public class AccessToken {
+public class AccessTokenService {
 
-	private final SpotifyUrlService url;
+	private final SpotifyUrlService spotifyUrlService;
 	private final RestTemplate restTemplate;
 	private final SpotifyAppConfigurationProperties spotifyAppConfigurationProperties;
 
@@ -35,7 +35,7 @@ public class AccessToken {
 		map.add("grant_type", "authorization_code");
 		map.add("code", code);
 		map.add("redirect_uri", properties.getRedirectUrl());
-		map.add("code_verifier", url.getCodeVerifier());
+		map.add("code_verifier", spotifyUrlService.getCodeVerifier());
 
 		HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
 
