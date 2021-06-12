@@ -2,10 +2,12 @@ package com.hardik.pottify.controllers;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.hardik.pottify.bean.ApiPath;
 import com.hardik.pottify.exception.NoAlbumSavedException;
 import com.hardik.pottify.service.SavedAlbumService;
 
@@ -17,7 +19,7 @@ public class SavedAlbumsController {
 
 	private final SavedAlbumService savedAlbumService;
 
-	@GetMapping("/savedAlbums")
+	@GetMapping(value = ApiPath.SAVED_ALBUMS, produces = MediaType.TEXT_HTML_VALUE)
 	public String savedAlbumsHandler(final HttpSession session, final Model model) {
 		try {
 			model.addAttribute("albums", savedAlbumService.getAlbums((String) session.getAttribute("accessToken")));

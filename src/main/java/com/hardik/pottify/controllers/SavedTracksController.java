@@ -2,10 +2,12 @@ package com.hardik.pottify.controllers;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.hardik.pottify.bean.ApiPath;
 import com.hardik.pottify.exception.NoTrackSavedException;
 import com.hardik.pottify.service.SavedTrackService;
 
@@ -17,7 +19,7 @@ public class SavedTracksController {
 
 	private final SavedTrackService savedTracks;
 
-	@GetMapping("/savedTracks")
+	@GetMapping(value = ApiPath.SAVED_TRACKS, produces = MediaType.TEXT_HTML_VALUE)
 	public String savedTracksHandler(final HttpSession session, final Model model) {
 		try {
 			model.addAttribute("tracks", savedTracks.getTracks((String) session.getAttribute("accessToken")));

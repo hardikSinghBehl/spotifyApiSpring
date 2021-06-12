@@ -2,11 +2,13 @@ package com.hardik.pottify.controllers;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.hardik.pottify.bean.ApiPath;
 import com.hardik.pottify.exception.NoTrackPlayingException;
 import com.hardik.pottify.service.AccessTokenService;
 import com.hardik.pottify.service.CurrentPlayingService;
@@ -19,18 +21,18 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class CallbackController {
 
-	private final SpotifyUrlService url;
+	private final SpotifyUrlService spotifyUrlService;
 	private final AccessTokenService accessToken;
 	private final ProfileDetailService userDetails;
 	private final CurrentPlayingService currentPlaying;
 
-	@GetMapping("/callback")
+	@GetMapping(value = ApiPath.CALLBACK, produces = MediaType.TEXT_HTML_VALUE)
 	public String handleCallback(@RequestParam(value = "code", required = false) final String code,
 			@RequestParam(value = "error", required = false) final String error, final Model model,
 			final HttpSession session) {
 
 		if (error != null) {
-			model.addAttribute("url", url.getAuthorizationURL());
+			model.addAttribute("url", spotifyUrlService.getAuthorizationURL());
 			return "callback-failure";
 		}
 		session.setAttribute("code", code);

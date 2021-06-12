@@ -2,11 +2,13 @@ package com.hardik.pottify.controllers;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.hardik.pottify.bean.ApiPath;
 import com.hardik.pottify.exception.InvalidSearchException;
 import com.hardik.pottify.service.SearchResultService;
 
@@ -18,7 +20,7 @@ public class SearchController {
 
 	private final SearchResultService searchResults;
 
-	@PostMapping("/search")
+	@PostMapping(value = ApiPath.SEARCH, produces = MediaType.TEXT_HTML_VALUE)
 	public String showSearchResults(@RequestParam("searchQuery") final String searchQuery, final HttpSession session,
 			final Model model) {
 		String token = (String) session.getAttribute("accessToken");

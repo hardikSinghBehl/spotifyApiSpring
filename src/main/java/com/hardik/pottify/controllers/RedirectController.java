@@ -2,10 +2,12 @@ package com.hardik.pottify.controllers;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.hardik.pottify.bean.ApiPath;
 import com.hardik.pottify.exception.NoTrackPlayingException;
 import com.hardik.pottify.service.CurrentPlayingService;
 import com.hardik.pottify.service.ProfileDetailService;
@@ -19,7 +21,7 @@ public class RedirectController {
 	private final ProfileDetailService userDetails;
 	private final CurrentPlayingService currentPlaying;
 
-	@GetMapping("/redirect")
+	@GetMapping(value = ApiPath.REDIRECT, produces = MediaType.TEXT_HTML_VALUE)
 	public String redirectToCallbackSuccess(final HttpSession session, final Model model) {
 
 		String token = (String) session.getAttribute("accessToken");

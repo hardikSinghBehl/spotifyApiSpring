@@ -2,11 +2,13 @@ package com.hardik.pottify.controllers;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.hardik.pottify.bean.ApiPath;
 import com.hardik.pottify.exception.NoAccountDataException;
 import com.hardik.pottify.service.TopTrackService;
 import com.hardik.pottify.utility.TermPeriodUtility;
@@ -19,7 +21,7 @@ public class TopTracksController {
 
 	private final TopTrackService topTracks;
 
-	@GetMapping("/topTracks")
+	@GetMapping(value = ApiPath.TOP_TRACKS, produces = MediaType.TEXT_HTML_VALUE)
 	public String topTracksaHandler(@RequestParam("term") final Integer term, final HttpSession session,
 			final Model model) {
 		try {

@@ -2,11 +2,13 @@ package com.hardik.pottify.controllers;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.hardik.pottify.bean.ApiPath;
 import com.hardik.pottify.exception.NoAccountDataException;
 import com.hardik.pottify.service.TopArtistService;
 import com.hardik.pottify.utility.TermPeriodUtility;
@@ -19,7 +21,7 @@ public class TopArtistsController {
 
 	private final TopArtistService topArtists;
 
-	@GetMapping("/topArtists")
+	@GetMapping(value = ApiPath.TOP_ARTISTS, produces = MediaType.TEXT_HTML_VALUE)
 	public String topArtistsHandler(@RequestParam("term") final Integer term, final HttpSession session,
 			final Model model) {
 		try {
