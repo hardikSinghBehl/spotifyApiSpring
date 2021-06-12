@@ -21,7 +21,7 @@ import lombok.AllArgsConstructor;
 @EnableConfigurationProperties(value = SpotifyAppConfigurationProperties.class)
 public class AccessToken {
 
-	private final URL url;
+	private final SpotifyUrlService url;
 	private final RestTemplate restTemplate;
 	private final SpotifyAppConfigurationProperties spotifyAppConfigurationProperties;
 

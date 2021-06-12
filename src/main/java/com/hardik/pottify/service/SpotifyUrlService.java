@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 @EnableConfigurationProperties(SpotifyAppConfigurationProperties.class)
-public class URL {
+public class SpotifyUrlService {
 
 	private final SpotifyAppConfigurationProperties spotifyAppConfigurationProperties;
 	private String codeVerifier;

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.hardik.pottify.exception.NoTrackPlayingException;
 import com.hardik.pottify.service.AccessToken;
 import com.hardik.pottify.service.CurrentPlaying;
-import com.hardik.pottify.service.URL;
+import com.hardik.pottify.service.SpotifyUrlService;
 import com.hardik.pottify.service.UserDetails;
 
 import lombok.AllArgsConstructor;
@@ -19,7 +19,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class CallbackController {
 
-	private final URL url;
+	private final SpotifyUrlService url;
 	private final AccessToken accessToken;
 	private final UserDetails userDetails;
 	private final CurrentPlaying currentPlaying;
