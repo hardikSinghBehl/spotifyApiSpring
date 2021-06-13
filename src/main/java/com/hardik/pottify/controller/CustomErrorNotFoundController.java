@@ -9,7 +9,7 @@ import com.hardik.pottify.constant.ApiPath;
 import com.hardik.pottify.constant.Template;
 
 @Controller
-public class MyErrorController implements ErrorController {
+public class CustomErrorNotFoundController implements ErrorController {
 
 	@RequestMapping(value = ApiPath.ERROR, produces = MediaType.TEXT_HTML_VALUE)
 	public String handleError() {
