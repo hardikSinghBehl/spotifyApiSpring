@@ -1,0 +1,116 @@
+// Chat
+.chat-room {
+  .friend-list {
+    li {
+      border-bottom: 1px solid #e0e0e0;
+      &:last-of-type {
+        border-bottom: none;
+      }
+    }
+  }
+  img {
+    &.avatar {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+  .text-small {
+    font-size: .95rem;
+  }
+  .text-smaller {
+    font-size: .75rem;
+  }
+  &.small-chat {
+    position: fixed;
+    bottom: 0;
+    width: 20rem;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    &.slim {
+      height: 3rem;
+      .icons {
+        .feature {
+          display: none;
+        }
+      }
+      .my-custom-scrollbar {
+        display: none;
+      }
+      .card-footer {
+        display: none;
+      }
+    }
+    .profile-photo {
+      img {
+        &.avatar {
+          width: 2rem;
+          height: 2rem;
+        }
+      }
+      .state {
+        position: relative;
+        top: -.5rem;
+        left: auto;
+        z-index: 2;
+        display: block;
+        width: .65rem;
+        height: .65rem;
+        margin-left: 1.35rem;
+        background-color: #007e33;
+        border: .1rem solid #fff;
+        border-radius: 50%;
+      }
+      &.message-photo {
+        margin-top: 2.7rem;
+      }
+    }
+    .heading {
+      height: 2.1rem;
+      .data {
+        line-height: 1.5;
+        .name {
+          font-size: .8rem;
+        }
+        .activity {
+          font-size: .75rem;
+        }
+      }
+    }
+    .icons {
+      padding-top: .45rem;
+    }
+    .my-custom-scrollbar {
+      position: relative;
+      height: 18rem;
+      overflow: auto;
+      > .card-body {
+        height: 18rem;
+        .chat-message {
+          .media {
+            img {
+              width: 3rem;
+            }
+            .media-body {
+              p {
+                font-size: .7rem;
+              }
+            }
+          }
+          .message-text {
+            margin-left: 2.47rem;
+          }
+        }
+      }
+    }
+    .card-footer {
+      .form-control {
+        padding: .375rem 0 .43rem 0;
+        font-size: .9rem;
+        border: none;
+        &:focus {
+          box-shadow: none;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+// Social buttons
+.counter {
+  // position: absolute;
+  position: relative;
+  top: -23px;
+  left: auto;
+  z-index: 2;
+  padding: $btn-counter-padding-y $btn-counter-padding-x;
+  // margin-top: $btn-counter-margin-top;
+  margin-left: $btn-counter-margin-left;
+  font-size: $btn-counter-font-size;
+  color: $white-base;
+  background-color: $btn-counter-bgc;
+  border-radius: $btn-counter-border-radius;
+  box-shadow: $z-depth-1;
+  &.counter-lg {
+    // margin-top: $btn-lg-counter-margin-top;
+    top: -27px;
+  }
+  &.counter-md {
+    // margin-top: $btn-md-counter-margin-top;
+    top: -19px;
+  }
+  &.counter-sm {
+    // margin-top: $btn-sm-counter-margin-top;
+    top: -15px;
+  }
+}
+
+@each $medium, $color in $social-colors {
+  @include make-button($medium, $color);
+}

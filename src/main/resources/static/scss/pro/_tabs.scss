@@ -1,0 +1,176 @@
+// Navs, Tabs and Pills
+.md-tabs {
+  position: relative;
+  z-index: 1;
+  padding: $tabs-padding;
+  margin-right: $tabs-margin-x;
+  margin-bottom: $tabs-margin-y;
+  margin-left: $tabs-margin-x;
+  background-color: $nav-tabs-pills-bgc;
+  border: 0;
+  border-radius: $nav-tabs-border-radius;
+  box-shadow: $z-depth-1-half;
+  .nav-item + .nav-item {
+    margin-left: 0;
+  }
+  .nav-item {
+    &.disabled {
+      pointer-events: none !important;
+      .nav-link {
+        color: $nav-item-disabled-link-color;
+      }
+    }
+  }
+  .nav-link {
+    color: $white-base;
+    border: 0;
+    transition: $nav-link-transition;
+  }
+  .nav-link.active,
+  .nav-item.open .nav-link {
+    color: $white-base;
+    background-color: $nav-link-active-bgc;
+    border-radius: $nav-tabs-border-radius;
+    transition: $nav-link-active-transition;
+  }
+  .nav-item.show .nav-link {
+    color: $white-base;
+    background-color: $nav-tabs-pills-bgc;
+    border-radius: $nav-tabs-border-radius;
+    transition: $nav-link-active-transition;
+  }
+  .nav-item.show .nav-link.dropdown-toggle {
+    background-color: $nav-link-active-bgc;
+  }
+}
+.tab-content {
+  padding: $tab-content-padding;
+  padding-top: $tab-content-pt;
+  // z-index: 1;
+  &.vertical {
+    padding-top: 0;
+  }
+}
+
+.md-pills {
+  border: 0;
+  li {
+    padding: $pills-padding;
+  }
+  .show > .nav-link {
+    color: $white-base;
+    background-color: $nav-tabs-pills-bgc;
+    box-shadow: $z-depth-1;
+  }
+  .nav-link {
+    color: $md-pills-nav-link-color;
+    text-align: center;
+    border-radius: $md-pills-nav-link-border-radius;
+    transition: $nav-link-transition;
+    &:hover {
+      // background-color: rgba(158, 158, 158, 0.3);
+      @extend .rgba-grey-light !optional;
+    }
+    &.active {
+      color: $white-base;
+      background-color: $nav-tabs-pills-bgc;
+      box-shadow: $z-depth-1;
+    }
+    &.active:hover {
+      box-shadow: $z-depth-1-half;
+    }
+  }
+}
+
+@each $name, $color in $mdb-colors {
+  .pills-#{$name} {
+    .show > .nav-link {
+      background-color: $color !important;
+    }
+    .nav-link {
+      &.active {
+        background-color: $color !important;
+      }
+    }
+  }
+  .tabs-#{$name} {
+    background-color: $color !important;
+  }
+}
+
+.classic-tabs {
+  .nav {
+    position: relative;
+    overflow-x: auto;
+    white-space: nowrap;
+    border-radius: $classic-tabs-border-radius $classic-tabs-border-radius 0 0;
+    @media (min-width: 62rem) {
+      overflow-x: hidden;
+    }
+    li {
+      a {
+        display: block;
+        padding: $classic-tabs-padding-y $classic-tabs-padding-x;
+        font-size: $classic-tabs-font-size;
+        color: $classic-tabs-color;
+        text-align: center;
+        text-transform: uppercase;
+        border-radius: 0;
+        &:not(.active) {
+          margin-bottom: $classic-tabs-li-a-active-border-bottom;
+        }
+        &.active {
+          color: $white-base;
+          border-bottom: $classic-tabs-li-a-active-border-bottom solid;
+        }
+      }
+      @media (min-width: 62em) {
+        &:first-child {
+          margin-left: $classic-tabs-margin-left;
+        }
+      }
+    }
+    @each $name, $color in $ctbc {
+      &.#{$name} {
+        li {
+          a {
+            &.active {
+              border-color: $color;
+            }
+          }
+        }
+      }
+    }
+    &.tabs-animated {
+      li {
+        a {
+          &.active {
+            border: none;
+          }
+        }
+      }
+      @each $name, $color in $ctbc {
+        &.#{$name} {
+          .floor {
+            background-color: $color;
+          }
+        }
+      }
+      .floor {
+        position: absolute;
+        bottom: 0;
+        z-index: 1200;
+        display: inline-block;
+        width: 30px;
+        height: 3px;
+        transition: all .4s linear;
+      }
+    }
+  }
+  .tab-content {
+    &.card {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+}
