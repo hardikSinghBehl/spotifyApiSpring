@@ -1,7 +1,5 @@
 package com.hardik.pottify.service;
 
-import java.util.LinkedHashMap;
-
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -12,6 +10,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
+import com.hardik.pottify.dto.AccessTokenDto;
 import com.hardik.pottify.properties.SpotifyAppConfigurationProperties;
 
 import lombok.RequiredArgsConstructor;
@@ -40,11 +39,8 @@ public class AccessTokenService {
 
 		HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
 
-		ResponseEntity<Object> response = restTemplate.postForEntity(URL, request, Object.class);
-
-		LinkedHashMap result = (LinkedHashMap) response.getBody();
-
-		return (String) result.get("access_token");
+		ResponseEntity<AccessTokenDto> response = restTemplate.postForEntity(URL, request, AccessTokenDto.class);
+		return response.getBody().getAccess_token();
 	}
 
 }
