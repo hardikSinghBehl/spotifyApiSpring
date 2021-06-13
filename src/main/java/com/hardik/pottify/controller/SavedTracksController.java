@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.hardik.pottify.constant.ApiPath;
+import com.hardik.pottify.constant.Template;
 import com.hardik.pottify.exception.NoTrackSavedException;
 import com.hardik.pottify.service.SavedTrackService;
 
@@ -24,9 +25,9 @@ public class SavedTracksController {
 		try {
 			model.addAttribute("tracks", savedTracks.getTracks((String) session.getAttribute("accessToken")));
 		} catch (NoTrackSavedException exception) {
-			return "no-track-saved";
+			return Template.NO_TRACK_SAVED;
 		}
-		return "saved-tracks";
+		return Template.SAVED_TRACKS;
 	}
 
 }

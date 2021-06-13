@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.hardik.pottify.constant.ApiPath;
+import com.hardik.pottify.constant.Template;
 import com.hardik.pottify.service.RecentPlayesTrackService;
 
 import lombok.AllArgsConstructor;
@@ -21,7 +22,7 @@ public class RecentTracksController {
 	@GetMapping(value = ApiPath.RECENT_TRACKS, produces = MediaType.TEXT_HTML_VALUE)
 	public String recentTracksHandler(final HttpSession session, final Model model) {
 		model.addAttribute("tracks", tracks.getHistory((String) session.getAttribute("accessToken")));
-		return "recent-tracks";
+		return Template.RECENT_TRACKS;
 	}
 
 }

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.hardik.pottify.constant.ApiPath;
+import com.hardik.pottify.constant.Template;
 import com.hardik.pottify.exception.NoTrackPlayingException;
 import com.hardik.pottify.service.CurrentPlayingService;
 import com.hardik.pottify.service.ProfileDetailService;
@@ -34,7 +35,7 @@ public class RedirectController {
 		} catch (NoTrackPlayingException exception) {
 			model.addAttribute("display", 0);
 		}
-		return "callback-success";
+		return Template.CALLBACK_SUCCESS;
 	}
 
 }

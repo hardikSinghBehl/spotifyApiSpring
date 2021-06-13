@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.hardik.pottify.constant.ApiPath;
+import com.hardik.pottify.constant.Template;
 import com.hardik.pottify.exception.NoAlbumSavedException;
 import com.hardik.pottify.service.SavedAlbumService;
 
@@ -24,9 +25,9 @@ public class SavedAlbumsController {
 		try {
 			model.addAttribute("albums", savedAlbumService.getAlbums((String) session.getAttribute("accessToken")));
 		} catch (NoAlbumSavedException exception) {
-			return "no-album-saved";
+			return Template.NO_ALBUM_SAVED;
 		}
-		return "saved-albums";
+		return Template.SAVED_ALBUMS;
 	}
 
 }

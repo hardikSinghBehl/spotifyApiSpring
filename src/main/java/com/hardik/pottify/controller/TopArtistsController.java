@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hardik.pottify.constant.ApiPath;
+import com.hardik.pottify.constant.Template;
 import com.hardik.pottify.exception.NoAccountDataException;
 import com.hardik.pottify.service.TopArtistService;
 import com.hardik.pottify.utility.TermPeriodUtility;
@@ -28,8 +29,8 @@ public class TopArtistsController {
 			model.addAttribute("artists", topArtists.getTopArtists((String) session.getAttribute("accessToken"), term));
 			model.addAttribute("term", TermPeriodUtility.getTerm(term));
 		} catch (NoAccountDataException exception) {
-			return "no-data";
+			return Template.NO_DATA;
 		}
-		return "top-artists";
+		return Template.TOP_ARTISTS;
 	}
 }

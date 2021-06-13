@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.hardik.pottify.constant.ApiPath;
+import com.hardik.pottify.constant.Template;
 import com.hardik.pottify.service.NewReleasedService;
 
 import lombok.AllArgsConstructor;
@@ -21,7 +22,7 @@ public class NewReleasesController {
 	@GetMapping(value = ApiPath.NEW_RELEASE, produces = MediaType.TEXT_HTML_VALUE)
 	public String newReleasesHandler(final HttpSession session, final Model model) {
 		model.addAttribute("releases", newReleases.getReleases((String) session.getAttribute("accessToken")));
-		return "new-releases.html";
+		return Template.NEW_RELEASES;
 	}
 
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hardik.pottify.constant.ApiPath;
+import com.hardik.pottify.constant.Template;
 import com.hardik.pottify.exception.NoTrackPlayingException;
 import com.hardik.pottify.service.AccessTokenService;
 import com.hardik.pottify.service.CurrentPlayingService;
@@ -33,15 +34,13 @@ public class CallbackController {
 
 		if (error != null) {
 			model.addAttribute("url", spotifyUrlService.getAuthorizationURL());
-			return "callback-failure";
+			return Template.CALLBACK_FAILURE;
 		}
 		session.setAttribute("code", code);
 		String token = accessToken.getToken(code);
 
 		session.setAttribute("accessToken", token);
 		model.addAttribute("accessToken", token);
-		System.out.println(token);
-
 		model.addAttribute("userName", userDetails.getUsername(token));
 
 		try {
@@ -51,6 +50,6 @@ public class CallbackController {
 			model.addAttribute("display", 0);
 		}
 
-		return "callback-success";
+		return Template.CALLBACK_SUCCESS;
 	}
 }

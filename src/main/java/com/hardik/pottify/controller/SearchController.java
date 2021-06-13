@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hardik.pottify.constant.ApiPath;
+import com.hardik.pottify.constant.Template;
 import com.hardik.pottify.exception.InvalidSearchException;
 import com.hardik.pottify.service.SearchResultService;
 
@@ -27,9 +28,9 @@ public class SearchController {
 		try {
 			model.addAttribute("results", searchResults.search(token, searchQuery));
 		} catch (InvalidSearchException exception) {
-			return "search-error";
+			return Template.SEARCH_ERROR;
 		}
-		return "search-results";
+		return Template.SEARCH_RESULTS;
 	}
 
 }
