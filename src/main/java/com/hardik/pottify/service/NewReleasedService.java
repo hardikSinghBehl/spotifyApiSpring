@@ -16,8 +16,7 @@ import lombok.RequiredArgsConstructor;
 public class NewReleasedService {
 
 	private final RestTemplate restTemplate;
-
-	private String url = "https://api.spotify.com/v1/browse/new-releases?limit=50";
+	private static final String URL = "https://api.spotify.com/v1/browse/new-releases?limit=50";
 
 	public Object getReleases(String token) {
 		HttpHeaders headers = new HttpHeaders();
@@ -25,7 +24,7 @@ public class NewReleasedService {
 
 		HttpEntity<String> entity = new HttpEntity<>("paramters", headers);
 
-		ResponseEntity<Object> response = restTemplate.exchange(url, HttpMethod.GET, entity, Object.class);
+		ResponseEntity<Object> response = restTemplate.exchange(URL, HttpMethod.GET, entity, Object.class);
 		LinkedHashMap result = (LinkedHashMap) response.getBody();
 
 		return result;

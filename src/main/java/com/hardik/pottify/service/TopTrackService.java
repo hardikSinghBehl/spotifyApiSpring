@@ -19,8 +19,7 @@ import lombok.RequiredArgsConstructor;
 public class TopTrackService {
 
 	private final RestTemplate restTemplate;
-
-	private String url = "https://api.spotify.com/v1/me/top/tracks?time_range=";
+	private static final String URL = "https://api.spotify.com/v1/me/top/tracks?time_range=";
 
 	public Object getTopTracks(String token, int term) {
 		HttpHeaders headers = new HttpHeaders();
@@ -30,7 +29,7 @@ public class TopTrackService {
 
 		HttpEntity<String> entity = new HttpEntity<>("paramters", headers);
 
-		ResponseEntity<Object> response = restTemplate.exchange(url + terms[term], HttpMethod.GET, entity,
+		ResponseEntity<Object> response = restTemplate.exchange(URL + terms[term], HttpMethod.GET, entity,
 				Object.class);
 		LinkedHashMap result = (LinkedHashMap) response.getBody();
 

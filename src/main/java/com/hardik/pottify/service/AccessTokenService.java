@@ -14,16 +14,17 @@ import org.springframework.web.client.RestTemplate;
 
 import com.hardik.pottify.properties.SpotifyAppConfigurationProperties;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 @EnableConfigurationProperties(value = SpotifyAppConfigurationProperties.class)
 public class AccessTokenService {
 
 	private final SpotifyUrlService spotifyUrlService;
 	private final RestTemplate restTemplate;
 	private final SpotifyAppConfigurationProperties spotifyAppConfigurationProperties;
+	private static final String URL = "https://accounts.spotify.com/api/token";
 
 	public String getToken(String code) {
 		final var properties = spotifyAppConfigurationProperties.getApp();
@@ -39,8 +40,7 @@ public class AccessTokenService {
 
 		HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
 
-		ResponseEntity<Object> response = restTemplate.postForEntity("https://accounts.spotify.com/api/token", request,
-				Object.class);
+		ResponseEntity<Object> response = restTemplate.postForEntity(URL, request, Object.class);
 
 		LinkedHashMap result = (LinkedHashMap) response.getBody();
 

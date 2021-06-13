@@ -9,13 +9,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ProfileDetailService {
 
 	private final RestTemplate restTemplate;
+	private static final String URL = "https://api.spotify.com/v1/me";
 
 	public LinkedHashMap getUser(String token) {
 		HttpHeaders headers = new HttpHeaders();
@@ -23,8 +24,7 @@ public class ProfileDetailService {
 
 		HttpEntity<String> entity = new HttpEntity<>("paramters", headers);
 
-		ResponseEntity<Object> response = restTemplate.exchange("https://api.spotify.com/v1/me", HttpMethod.GET, entity,
-				Object.class);
+		ResponseEntity<Object> response = restTemplate.exchange(URL, HttpMethod.GET, entity, Object.class);
 		LinkedHashMap result = (LinkedHashMap) response.getBody();
 
 		return result;

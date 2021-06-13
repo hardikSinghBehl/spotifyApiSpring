@@ -20,10 +20,7 @@ import lombok.RequiredArgsConstructor;
 public class SearchResultService {
 
 	private final RestTemplate restTemplate;
-
-	private SearchQueryFormatter formatter = new SearchQueryFormatter();
-
-	private String url = "https://api.spotify.com/v1/search?q=SEARCH_QUERY&type=album,artist,playlist,track&limit=3";
+	private static final String URL = "https://api.spotify.com/v1/search?q=SEARCH_QUERY&type=album,artist,playlist,track&limit=3";
 
 	public Object search(String token, String searchQuery) {
 
@@ -37,7 +34,8 @@ public class SearchResultService {
 		HttpEntity<String> entity = new HttpEntity<>("paramters", headers);
 
 		ResponseEntity<Object> response = restTemplate.exchange(
-				url.replace("SEARCH_QUERY", formatter.format(searchQuery)), HttpMethod.GET, entity, Object.class);
+				URL.replace("SEARCH_QUERY", SearchQueryFormatter.format(searchQuery)), HttpMethod.GET, entity,
+				Object.class);
 		LinkedHashMap result = (LinkedHashMap) response.getBody();
 
 		return result;
@@ -50,7 +48,8 @@ public class SearchResultService {
 		HttpEntity<String> entity = new HttpEntity<>("paramters", headers);
 
 		ResponseEntity<Object> response = restTemplate.exchange(
-				url.replace("SEARCH_QUERY", formatter.format(searchQuery)), HttpMethod.GET, entity, Object.class);
+				URL.replace("SEARCH_QUERY", SearchQueryFormatter.format(searchQuery)), HttpMethod.GET, entity,
+				Object.class);
 		LinkedHashMap result = (LinkedHashMap) response.getBody();
 
 		LinkedHashMap albums = (LinkedHashMap) result.get("albums");

@@ -19,8 +19,7 @@ import lombok.RequiredArgsConstructor;
 public class SavedTrackService {
 
 	private final RestTemplate restTemplate;
-
-	private String url = "https://api.spotify.com/v1/me/tracks?limit=50";
+	private static final String URL = "https://api.spotify.com/v1/me/tracks?limit=50";
 
 	public Object getTracks(String token) {
 		HttpHeaders headers = new HttpHeaders();
@@ -28,7 +27,7 @@ public class SavedTrackService {
 
 		HttpEntity<String> entity = new HttpEntity<>("paramters", headers);
 
-		ResponseEntity<Object> response = restTemplate.exchange(url, HttpMethod.GET, entity, Object.class);
+		ResponseEntity<Object> response = restTemplate.exchange(URL, HttpMethod.GET, entity, Object.class);
 		LinkedHashMap result = (LinkedHashMap) response.getBody();
 
 		ArrayList items = (ArrayList) result.get("items");
