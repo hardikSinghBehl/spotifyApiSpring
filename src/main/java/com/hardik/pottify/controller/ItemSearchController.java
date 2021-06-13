@@ -17,7 +17,7 @@ import lombok.AllArgsConstructor;
 
 @Controller
 @AllArgsConstructor
-public class SearchController {
+public class ItemSearchController {
 
 	private final SearchResultService searchResults;
 
