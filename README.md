@@ -28,6 +28,10 @@
 * [Spotify OAuth flow (PKCE)](https://developer.spotify.com/documentation/general/guides/authorization-guide/)
 * [Proof-Key-For-Code Exchange (PKCE) Docs](https://datatracker.ietf.org/doc/html/rfc7636)
 * [RestTemplate: Guide](https://www.baeldung.com/rest-template)
+---
+### Screen-record (Low Quality)
+
+![pottify-screen-record-demo](https://user-images.githubusercontent.com/69693621/122225635-df50ca80-ced2-11eb-92e7-9dec877cfbf7.gif)
 
 ## Local Setup
 
